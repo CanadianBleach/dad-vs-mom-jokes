@@ -1,15 +1,15 @@
 async function fetchData(url) {
-  fetch(url), {
-    headers: {
-      Accept: "application/json",
-    },
-  }
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      return(data);
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Accept": "application/json"
+      }
     });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export { fetchData };

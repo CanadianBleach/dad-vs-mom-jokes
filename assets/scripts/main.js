@@ -13,13 +13,7 @@ let dadJoke = document.querySelector("#dad-joke");
 momJoke.addEventListener("click", buttonPressed);
 dadJoke.addEventListener("click", buttonPressed);
 
-let dadRes = await fetchData("https://icanhazdadjoke.com/");
 
-dadJoke.textContent = dadRes.joke;
-
-let momRes = await fetchData("https://icanhazdadjoke.com/");
-
-momJoke.textContent = momRes.joke;
 
 function buttonPressed() {
   updateJokes();
@@ -31,6 +25,13 @@ function updateJokes() {
   
 }
 // Refresh the buttons
-function refreshButtons() {
+async function refreshButtons() {
+  let dadRes = await fetchData("https://icanhazdadjoke.com/");
+
+dadJoke.textContent = dadRes.joke;
+
+let momRes = await fetchData("https://icanhazdadjoke.com/");
+
+momJoke.textContent = momRes.joke;
   
 }

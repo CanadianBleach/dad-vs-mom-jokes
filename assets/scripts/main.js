@@ -1,11 +1,7 @@
 import { fetchData } from "../utils/utils.js";
 
-let momJokes = [
-  {
-    id: "1",
-    joke: ""
-  },
-];
+let momJokes = [];
+let dadJokes = [];
 
 let momJoke = document.querySelector("#mom-joke");
 let dadJoke = document.querySelector("#dad-joke");
@@ -16,13 +12,17 @@ dadJoke.addEventListener("click", buttonPressed);
 refreshButtons();
 
 function buttonPressed() {
-  updateJokes();
+  updateJokes(document.activeElement.textContent, document.activeElement.id);
   refreshButtons();
-  console.log(document.activeElement.id);
+  console.log(momJokes, dadJokes);
 }
 // Update the count
-function updateJokes() {
-  
+function updateJokes(joke, id) {
+  if (id = "mom-joke") {
+    momJokes.unshift(joke);
+  } else {
+    dadJokes.unshift(joke);
+  }
 }
 // Refresh the buttons
 async function refreshButtons() {

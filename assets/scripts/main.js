@@ -13,7 +13,7 @@ let dadJoke = document.querySelector("#dad-joke");
 momJoke.addEventListener("click", buttonPressed);
 dadJoke.addEventListener("click", buttonPressed);
 
-
+refreshButtons();
 
 function buttonPressed() {
   updateJokes();

@@ -17,6 +17,9 @@ let dadJokeResp = await fetchData(dadJokeURL);
 refreshJokeText();
 refreshJokes();
 
+// Load jokes from local storage
+loadJokes();
+
 function refreshJokeText() {
   jokeElement.textContent = jokeResp.joke;
   dadJokeElement.textContent = dadJokeResp.joke;
@@ -63,5 +66,17 @@ function init() {
   jokeElement.addEventListener("click", buttonPressed);
   dadJokeElement.addEventListener("click", buttonPressed);
 }
+
+
+function loadJokes () {
+  let data = JSON.parse(localStorage.getItem("jokes"));
+  if (data == null){
+    return;
+  }
+  for(let d in data){
+    pastJokes.push(d);
+  }
+}
+
 
 init();

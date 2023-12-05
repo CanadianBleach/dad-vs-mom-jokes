@@ -7,7 +7,8 @@ let jokeElement = document.querySelector("#joke");
 let dadJokeElement = document.querySelector("#dad-joke");
 
 let dadJokeURL = "https://icanhazdadjoke.com/";
-let jokeURL = "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single";
+let jokeURL =
+  "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single";
 
 // Get and set jokes
 let jokeResp = await fetchData(jokeURL);
@@ -17,8 +18,11 @@ let dadJokeResp = await fetchData(dadJokeURL);
 refreshJokeText();
 refreshJokes();
 
+console.log(pastJokes);
+
 // Load jokes from local storage
 loadJokes();
+console.log(pastJokes);
 
 function refreshJokeText() {
   jokeElement.textContent = jokeResp.joke;
@@ -55,10 +59,13 @@ function buttonPressed() {
 function addJoke(joke, id) {
   pastJokes.unshift({
     id: `${jokeIndex}`,
-    type : `${id}`,
-    jokeText : joke,
-    rating : 50.0,
+    type: `${id}`,
+    jokeText: joke,
+    rating: 50.0,
   });
+
+  saveJokes();
+
   jokeIndex++;
 }
 
@@ -67,16 +74,20 @@ function init() {
   dadJokeElement.addEventListener("click", buttonPressed);
 }
 
-
-function loadJokes () {
+function loadJokes() {
   let data = JSON.parse(localStorage.getItem("jokes"));
-  if (data == null){
+  if (data == null) {
     return;
   }
-  for(let d in data){
-    pastJokes.push(d);
+  for (let d in data) {
+    pastJokes.unshift(data[d]);
   }
+  jokeIndex = data[0].id + 1;
 }
 
+function saveJokes() {
+  localStorage.setItem("jokes", JSON.stringify(pastJokes));
+}
 
 init();
+

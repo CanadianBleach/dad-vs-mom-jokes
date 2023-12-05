@@ -1,14 +1,17 @@
 import { fetchData } from "../utils/utils.js";
 
-let jokes = [];
-let dadJokes = [];
+let pastJokes = [];
+let jokeIndex = 0;
 
 let jokeElement = document.querySelector("#joke");
 let dadJokeElement = document.querySelector("#dad-joke");
 
+let dadJokeURL = "https://icanhazdadjoke.com/";
+let jokeURL = "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single";
+
 // Get and set jokes
-let jokeResp = await fetchData("https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single");
-let dadJokeResp = await fetchData("https://icanhazdadjoke.com/");
+let jokeResp = await fetchData(jokeURL);
+let dadJokeResp = await fetchData(dadJokeURL);
 // Set joke text, and get new jokes ready
 // This prevents a delay in the jokes changing
 refreshJokeText();
@@ -17,31 +20,43 @@ refreshJokes();
 function refreshJokeText() {
   jokeElement.textContent = jokeResp.joke;
   dadJokeElement.textContent = dadJokeResp.joke;
+
+  // Will be elements 0, 1 of array
+  addJoke(jokeResp.joke, "joke");
+  addJoke(dadJokeResp.joke, "dad-joke");
 }
 
 // Get new jokes to add
 async function refreshJokes() {
-  jokeResp = await fetchData("https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single");
-  dadJokeResp = await fetchData("https://icanhazdadjoke.com/");
+  jokeResp = await fetchData(jokeURL);
+  dadJokeResp = await fetchData(dadJokeURL);
 }
 
 // Log joke selected
 function buttonPressed() {
-  // Add winning jokes to array
-  // Adds via textContent so we must do it before we change the text
-  addJoke(document.activeElement.textContent, document.activeElement.id);
+  if (document.activeElement.id == "joke") {
+    pastJokes[0].rating -= 3;
+    pastJokes[1].rating += 3;
+  } else {
+    pastJokes[0].rating += 3;
+    pastJokes[1].rating -= 3;
+  }
 
   refreshJokeText();
   refreshJokes();
+
+  console.log(pastJokes);
 }
 
-// Update the count
+// Add joke to array
 function addJoke(joke, id) {
-  if (id = "joke") {
-    jokes.unshift(joke);
-  } else {
-    dadJokes.unshift(joke);
-  }
+  pastJokes.unshift({
+    id: `${jokeIndex}`,
+    type : `${id}`,
+    jokeText : joke,
+    rating : 50.0,
+  });
+  jokeIndex++;
 }
 
 function init() {

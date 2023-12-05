@@ -13,16 +13,14 @@ let jokeURL =
 // Get and set jokes
 let jokeResp = await fetchData(jokeURL);
 let dadJokeResp = await fetchData(dadJokeURL);
+
+// Load jokes from local storage
+loadJokes();
+
 // Set joke text, and get new jokes ready
 // This prevents a delay in the jokes changing
 refreshJokeText();
 refreshJokes();
-
-console.log(pastJokes);
-
-// Load jokes from local storage
-loadJokes();
-console.log(pastJokes);
 
 function refreshJokeText() {
   jokeElement.textContent = jokeResp.joke;
@@ -56,10 +54,10 @@ function buttonPressed() {
 }
 
 // Add joke to array
-function addJoke(joke, id) {
+function addJoke(joke, elemId) {
   pastJokes.unshift({
-    id: `${jokeIndex}`,
-    type: `${id}`,
+    id: jokeIndex,
+    type: `${elemId}`,
     jokeText: joke,
     rating: 50.0,
   });
@@ -80,13 +78,15 @@ function loadJokes() {
     return;
   }
   for (let d in data) {
-    pastJokes.unshift(data[d]);
+    console.log(data[d]);
+    pastJokes.push(data[d]);
   }
   jokeIndex = data[0].id + 1;
 }
 
 function saveJokes() {
-  localStorage.setItem("jokes", JSON.stringify(pastJokes));
+  let toSave = JSON.stringify(pastJokes);
+  localStorage.setItem("jokes", toSave);
 }
 
 init();

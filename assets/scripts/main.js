@@ -6,18 +6,21 @@ localStorage.clear();
 let pastJokes = [];
 let jokeIndex = 0;
 
-let jokeElement = document.querySelector("#joke");
+let momJokeElement = document.querySelector("#mom-joke");
 let dadJokeElement = document.querySelector("#dad-joke");
 
 let dadJokeURL = "https://icanhazdadjoke.com/";
+let yoMomJoke = "https://api.yomomma.info/";
+
+// For testing
 let jokeURL =
   "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single";
 
   
-let coooors = "https://api.yomomma.info/";
+
 
 // Get and set jokes
-let jokeResp = await fetchData(coooors);
+let jokeResp = await fetchData(yoMomJoke);
 let dadJokeResp = await fetchData(dadJokeURL);
 
 // Load jokes from local storage
@@ -37,13 +40,13 @@ function refreshJokeText() {
   dadJokeElement.textContent = dadJokeResp.joke;
 
   // Will be elements 0, 1 of array
-  addJoke(jokeResp.joke, "joke");
+  addJoke(yoMomJoke.joke, "mom-joke");
   addJoke(dadJokeResp.joke, "dad-joke");
 }
 
 // Get new jokes to add
 async function refreshJokes() {
-  jokeResp = await fetchData(jokeURL);
+  yoMomJoke = await fetchData(yoMomJoke);
   dadJokeResp = await fetchData(dadJokeURL);
 }
 
@@ -78,7 +81,7 @@ function addJoke(joke, elemId) {
 }
 
 function init() {
-  jokeElement.addEventListener("click", buttonPressed);
+  yoMomJoke.addEventListener("click", buttonPressed);
   dadJokeElement.addEventListener("click", buttonPressed);
 }
 

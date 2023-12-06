@@ -1,8 +1,5 @@
 import { fetchData } from "../utils/utils.js";
 
-// TAKE THIS OUT DEAR GOD
-localStorage.clear();
-
 let pastJokes = [];
 let jokeIndex = 0;
 
@@ -11,11 +8,11 @@ let dadJokeElement = document.querySelector("#dad-joke");
 
 // URLS
 let dadJokeURL = "https://icanhazdadjoke.com/";
-let yoMomJoke = "https://www.anthonycooper.me/momma";
+let yoMomJokeURL = "https://www.anthonycooper.me/momma";
 
 
 // Get and set jokes
-let momJokeResp = await fetchData(yoMomJoke);
+let momJokeResp = await fetchData(yoMomJokeURL);
 let dadJokeResp = await fetchData(dadJokeURL);
 
 // Load jokes from local storage
@@ -35,19 +32,19 @@ function refreshJokeText() {
   dadJokeElement.textContent = dadJokeResp.joke;
 
   // Will be elements 0, 1 of array
-  addJoke(yoMomJoke.joke, "mom-joke");
+  addJoke(momJokeResp.joke, "mom-joke");
   addJoke(dadJokeResp.joke, "dad-joke");
 }
 
 // Get new jokes to add
 async function refreshJokes() {
-  yoMomJoke = await fetchData(yoMomJoke);
+  momJokeResp = await fetchData(yoMomJokeURL);
   dadJokeResp = await fetchData(dadJokeURL);
 }
 
 // Log joke selected
 function buttonPressed() {
-  if (document.activeElement.id == "joke") {
+  if (document.activeElement.id == "mom-joke") {
     pastJokes[0].rating -= 3;
     pastJokes[1].rating += 3;
   } else {

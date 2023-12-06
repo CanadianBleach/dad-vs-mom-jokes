@@ -1,5 +1,8 @@
 import { fetchData } from "../utils/utils.js";
 
+// TAKE THIS OUT DEAR GOD
+localStorage.clear();
+
 let pastJokes = [];
 let jokeIndex = 0;
 
@@ -10,8 +13,11 @@ let dadJokeURL = "https://icanhazdadjoke.com/";
 let jokeURL =
   "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single";
 
+  
+let coooors = "https://api.yomomma.info/";
+
 // Get and set jokes
-let jokeResp = await fetchData(jokeURL);
+let jokeResp = await fetchData(coooors);
 let dadJokeResp = await fetchData(dadJokeURL);
 
 // Load jokes from local storage
@@ -21,6 +27,10 @@ loadJokes();
 // This prevents a delay in the jokes changing
 refreshJokeText();
 refreshJokes();
+
+// Remove loading class
+jokeElement.classList.remove("is-loading");
+dadJokeElement.classList.remove("is-loading");
 
 function refreshJokeText() {
   jokeElement.textContent = jokeResp.joke;

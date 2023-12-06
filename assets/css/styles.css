@@ -2,3 +2,16 @@
   background-color: #ffbcff;
   background-image: linear-gradient(140deg, #ffbcff 0%, #a6f5ee 100%);
 }
+
+.button {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.question {
+  outline: auto;
+}
+
+.question:hover {
+  background-color: blue;
+}

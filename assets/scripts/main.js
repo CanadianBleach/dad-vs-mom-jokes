@@ -9,18 +9,14 @@ let jokeIndex = 0;
 let momJokeElement = document.querySelector("#mom-joke");
 let dadJokeElement = document.querySelector("#dad-joke");
 
+// Cors error when run on live server use
+// Use "Allow cors" chome extension for dev
 let dadJokeURL = "https://icanhazdadjoke.com/";
 let yoMomJoke = "https://api.yomomma.info/";
 
-// For testing
-let jokeURL =
-  "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,political,racist,sexist,explicit&type=single";
-
-  
-
 
 // Get and set jokes
-let jokeResp = await fetchData(yoMomJoke);
+let momJokeResp = await fetchData(yoMomJoke);
 let dadJokeResp = await fetchData(dadJokeURL);
 
 // Load jokes from local storage
@@ -32,11 +28,11 @@ refreshJokeText();
 refreshJokes();
 
 // Remove loading class
-jokeElement.classList.remove("is-loading");
+momJokeElement.classList.remove("is-loading");
 dadJokeElement.classList.remove("is-loading");
 
 function refreshJokeText() {
-  jokeElement.textContent = jokeResp.joke;
+  momJokeElement.textContent = momJokeResp.joke;
   dadJokeElement.textContent = dadJokeResp.joke;
 
   // Will be elements 0, 1 of array
@@ -81,7 +77,7 @@ function addJoke(joke, elemId) {
 }
 
 function init() {
-  yoMomJoke.addEventListener("click", buttonPressed);
+  momJokeElement.addEventListener("click", buttonPressed);
   dadJokeElement.addEventListener("click", buttonPressed);
 }
 

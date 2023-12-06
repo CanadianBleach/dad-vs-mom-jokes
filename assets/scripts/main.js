@@ -9,10 +9,9 @@ let jokeIndex = 0;
 let momJokeElement = document.querySelector("#mom-joke");
 let dadJokeElement = document.querySelector("#dad-joke");
 
-// Cors error when run on live server use
-// Use "Allow cors" chome extension for dev
+// URLS
 let dadJokeURL = "https://icanhazdadjoke.com/";
-let yoMomJoke = "https://api.yomomma.info/";
+let yoMomJoke = "https://www.anthonycooper.me/momma";
 
 
 // Get and set jokes

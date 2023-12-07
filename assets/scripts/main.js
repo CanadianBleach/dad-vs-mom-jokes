@@ -52,10 +52,18 @@ function buttonPressed() {
     pastJokes[1].rating -= 3;
   }
 
-  refreshJokeText();
-  refreshJokes();
+  if (jokeIndex % 5 == 0) {
+  tryOldJoke();
+  } else {
+    refreshJokeText();
+    refreshJokes();
+  }
+}
 
-  console.log(pastJokes);
+function tryOldJoke() {
+  let joke = pastJokes[Math.floor(Math.random()*pastJokes.length)];
+  console.log(joke);
+  console.log(jokeIndex);
 }
 
 // Add joke to array
@@ -83,7 +91,6 @@ function loadJokes() {
     return;
   }
   for (let d in data) {
-    console.log(data[d]);
     pastJokes.push(data[d]);
   }
   jokeIndex = data[0].id + 1;

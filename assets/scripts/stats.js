@@ -1,3 +1,5 @@
+import ScoreTile from "../utils/scoreTile.js"
+
 let parentDiv = document.querySelector("#parent");
 
 function loadJokes() {
@@ -6,10 +8,8 @@ function loadJokes() {
         return;
     }
     for (let d in data) {
-        let element = document.createElement("p");
-        element.textContent = `${data[d].jokeText}: ${data[d].rating}`;
+        let element = new ScoreTile(d, data[d].rating, data[d].jokeText)
         parentDiv.appendChild(element);
-
     }
 }
 

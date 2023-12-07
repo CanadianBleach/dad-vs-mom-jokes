@@ -47,6 +47,10 @@ function init() {
     // Load jokes from storage
     loadJokes();
 
+
+    if (jokes.length == 0)
+        return;
+
     // Sort jokes by rating
     let sortedJokes = jokes.sort((a, b) => {
         if (a.rating > b.rating) {

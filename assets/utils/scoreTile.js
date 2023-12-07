@@ -1,5 +1,7 @@
 export default class ScoreTile extends HTMLElement {
 	constructor(rank, score, joke) {
+        // This is the only way it wouldnt append to string
+        rank++;
 		super();
 		this.innerHTML =
 			`<div class="columns is-mobile">

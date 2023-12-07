@@ -1,5 +1,4 @@
 import ScoreTile from "../utils/scoreTile.js"
-
 let parentDiv = document.querySelector("#parent");
 
 function loadJokes() {
@@ -7,10 +6,30 @@ function loadJokes() {
     if (data == null) {
         return;
     }
-    for (let d in data) {
-        let element = new ScoreTile(d, data[d].rating, data[d].jokeText)
+
+    return data;
+}
+
+function init() {
+    let jokes = loadJokes();
+    let sortedJokes = jokes.sort((a, b) => {
+        if (a.rating > b.rating) {
+            return -1;
+        }
+        if (a.rating < b.rating) {
+            return 1;
+        }
+        return 0;
+    });
+
+    console.log(sortedJokes);
+    
+    for (let j in sortedJokes) {
+        let element = new ScoreTile(j, sortedJokes[j].rating, sortedJokes[j].jokeText)
         parentDiv.appendChild(element);
     }
 }
 
-loadJokes();
+init();
+
+

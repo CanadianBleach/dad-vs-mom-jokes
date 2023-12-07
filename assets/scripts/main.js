@@ -93,15 +93,12 @@ function tryOldJoke() {
     addJoke(momJokeResp.joke, "mom-joke");
     jokes.unshift(joke);
   }
-
-  console.log(jokes);
 }
 
 // Add joke to array
 function addJoke(joke, elemId) {
   for (let joke in jokes) {
     if (jokes[joke].jokeText == jokes) {
-      console.log("CAUGHT DUPE");
       return;
     }
   }

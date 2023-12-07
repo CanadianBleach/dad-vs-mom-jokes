@@ -4,7 +4,7 @@ export default class ScoreTile extends HTMLElement {
         rank++;
 		super();
 		this.innerHTML =
-			`<div class="columns is-mobile">
+			`<div class="columns is-mobile m-2">
             <div class="column is-one-fifth has-text-centered">
               <p class="is-size-3">${rank})</p>
             </div>

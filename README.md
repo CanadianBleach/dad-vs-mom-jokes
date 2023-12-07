@@ -1,5 +1,7 @@
 # Dad-vs-Mom-Jokes
 
+## Links
+Try our site [here](https://canadianbleach.github.io/dad-vs-mom-jokes/)
 
 ## Description
 Motivation
@@ -16,8 +18,10 @@ Learnings
 
 
 ## Screenshot
-![Screenshot of Dad Vs Mom Jokes](./images/placeholder.png)
+![Main Page](./assets/images/quiz-page.PNG)
+
+![Stats Page](./assets/images/leaderboard.PNG)
 
 
-## Links
-[Live URL](https://placeholder.github.io/placeholder/)
+
+

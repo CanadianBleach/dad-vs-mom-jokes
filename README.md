@@ -16,7 +16,7 @@ Learnings
 
 
 ## Screenshot
-![Screenshot of Placeholder](./images/placeholder.png)
+![Screenshot of Dad Vs Mom Jokes](./images/placeholder.png)
 
 
 ## Links

@@ -1,5 +1,7 @@
 import { fetchData } from "../utils/utils.js";
 
+localStorage.clear();
+
 let pastJokes = [];
 let jokeIndex = 0;
 
@@ -52,8 +54,8 @@ function buttonPressed() {
     pastJokes[1].rating -= 3;
   }
 
-  if (jokeIndex % 5 == 0) {
-  tryOldJoke();
+  if ((jokeIndex / 2) % 5 == 0) {
+    tryOldJoke();
   } else {
     refreshJokeText();
     refreshJokes();
@@ -61,13 +63,31 @@ function buttonPressed() {
 }
 
 function tryOldJoke() {
-  let joke = pastJokes[Math.floor(Math.random()*pastJokes.length)];
+  // Skip first two index which are current most jokes
+  let joke = pastJokes[2 + Math.floor(Math.random() * (pastJokes.length - 2))];
   console.log(joke);
-  console.log(jokeIndex);
+
+  if (joke.type == "mom-joke") {
+    momJokeElement.textContent = joke.jokeText;
+    dadJokeElement.textContent = dadJokeResp.joke;
+
+    // Since loaded dad joke was used
+    dadJokeResp = fetchData(dadJokeURL);
+    addJoke(dadJokeResp.joke, "dad-joke");
+  } else {
+    dadJokeElement.textContent = joke.jokeText;
+    momJokeElement.textContent = momJokeResp.joke;
+    
+    // Since loaded mom joke was used
+    momJokeResp = fetchData(yoMomJokeURL);
+    addJoke(momJokeResp.joke, "mom-joke");
+  }
 }
 
 // Add joke to array
 function addJoke(joke, elemId) {
+  // TODO Check for dupe
+
   pastJokes.unshift({
     id: jokeIndex,
     type: `${elemId}`,

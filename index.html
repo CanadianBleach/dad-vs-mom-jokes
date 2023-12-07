@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Swag Joke</title>
+    <title>Swag Jokes</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
@@ -12,35 +12,29 @@
   </head>
   <body>
     <section class="hero is-fullheight">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <a id="lol" class="ml-3 navbar-item" href="./assets/pages/stats.html">
-              Stats
-            </a>
-            <a class="navbar-item" href="https://github.com/CanadianBleach/dad-vs-mom-jokes" target="#blank">
-              Github
-            </a>    
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div class="is-flex">
+        <div class="block m-1"></div>
+        <a class="m-3" href="./assets/pages/stats.html"> Stats </a>
+        <a
+          class="m-3"
+          href="https://github.com/CanadianBleach/dad-vs-mom-jokes"
+          target="#blank"
+        >
+          Github
+        </a>
+      </div>
       <div
-        class="hero-body has-text-centered is-flex-direction-column is-justify-content-space-evenly"
+        class="hero-body has-text-centered is-flex-direction-column is-justify-content-space-evenly mb-5"
       >
         <div id="questions" class="mb-5 visible">
-          <div class="has-text-centered">
-            <button
-              id="mom-joke"
-              class="button is-info is-medium is-loading is-outlined"
-            ></button>
+          <div class="btn has-text-centered m-3">
+            <div id="mom-joke" class="subtitle is-3"></div>
           </div>
-          <h2 class="title is-3 m-5 has-text-info">OR</h2>
-          <div class="has-text-centered">
-            <button
-              id="dad-joke"
-              class="button is-info is-medium is-loading is-outlined"
-            ></button>
+          <div class="m-6">
+            <h2 class="title is-3 has-text">OR</h2>
+          </div>
+          <div class="btn m-3 has-text-centered">
+            <div id="dad-joke" class="subtitle is-3"></div>
           </div>
         </div>
       </div>

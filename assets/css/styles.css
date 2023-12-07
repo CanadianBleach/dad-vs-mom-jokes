@@ -1,22 +1,47 @@
 .hero {
   background-color: #ffbcff;
-  background-image: linear-gradient(140deg, #ffbcff 0%, #a6f5ee 100%);
+  background-image: linear-gradient(140deg, #ffbcff 0%, #aadfda 100%);
 }
 
 .visible {
   animation: fadeIn 3s ease forwards;
+  opacity: 100%;
 }
 
 .hidden {
-  animation: fadeOut 3s ease forwards;
+  animation: fadeOut 1s ease forwards;
+  opacity: 0;
+}
+
+a {
+  transition: color ease .2s;
+  color: black;
+}
+
+a:hover {
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.btn div{
+  transition: color ease .2s;
+}
+
+.btn div:hover {
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+#questions {
+  width: 70%;
 }
 
 @keyframes fadeIn {
-  0% { opacity:0; }
-  100% { opacity:1; } 
+  0% { opacity: 0; }
+  100% { opacity: 1; } 
 }
 
 @keyframes fadeOut {
-  0% { opacity:1; }
-  100% { opacity:0; } 
+  0% { opacity: 1; }
+  100% { opacity: 0; } 
 }

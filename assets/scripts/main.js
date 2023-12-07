@@ -1,7 +1,5 @@
 import { fetchData } from "../utils/utils.js";
 
-localStorage.clear();
-
 let jokes = [];
 let jokeIndex = 0;
 let questionsAnswered = 0;
@@ -18,7 +16,8 @@ let momJokeResp = await fetchData(yoMomJokeURL);
 let dadJokeResp = await fetchData(dadJokeURL);
 
 // Load jokes from local storage
-loadJokes();// Set joke text, and get new jokes ready
+loadJokes();
+// Set joke text, and get new jokes ready
 // This prevents a delay in the jokes changing
 
 // Will be elements 0, 1 of array
@@ -48,6 +47,8 @@ async function reloadJokes() {
 
 // Log joke selected
 function buttonPressed() {
+  saveJokes();
+
   questionsAnswered++;
 
   if (document.activeElement.id == "mom-joke") {
@@ -80,10 +81,6 @@ function tryOldJoke() {
   // Remove joke
   jokes.splice(index, 1);
 
-  console.log(index);
-  console.log(joke);
-  console.log(jokes);
-
   if (joke.type == "mom-joke") {
     // Splice in mom joke and add dad joke response to array
     jokes.unshift(joke);
@@ -110,7 +107,6 @@ function addJoke(joke, elemId) {
     rating: 50.0,
   });
 
-  saveJokes();
   jokeIndex++;
 }
 
@@ -120,19 +116,24 @@ function init() {
 }
 
 function loadJokes() {
-  let data = JSON.parse(localStorage.getItem("jokes"));
-  if (data == null) {
+  console.log(localStorage.getItem("jokes"));
+  let data = localStorage.getItem("jokes");
+  let parsed = JSON.parse(data);
+  console.log(parsed);
+  if (parsed == null) {
     return;
   }
-  for (let d in data) {
-    jokes.push(data[d]);
+  for (let i in parsed) {
+    jokes.push(parsed[i]);
   }
-  jokeIndex = data[0].id + 1;
+
+  jokeIndex = parsed[0].id + 1;
 }
 
 function saveJokes() {
   let toSave = JSON.stringify(jokes);
   localStorage.setItem("jokes", toSave);
+  console.log(localStorage.getItem("jokes"));
 }
 
 init();

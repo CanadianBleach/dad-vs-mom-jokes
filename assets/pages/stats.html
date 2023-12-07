@@ -12,31 +12,23 @@
   </head>
   <body>
     <section class="hero is-fullheight">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <a class="ml-3 navbar-item" href="../../index.html">
-              Questions
-            </a>
-            <a class="navbar-item" href="https://github.com/CanadianBleach/dad-vs-mom-jokes" target="#blank">
-              Github
-            </a>    
-            </div>
-          </div>
-          <div class="navbar-end">
-            <a id="clear" class="mr-3 navbar-item">
-              Clear Saved
-            </a>
-          </div>
-        </div>
-      </nav>
-      <div
-        class="hero-body has-text-centered is-flex-direction-column"
-      >
-      <h1 class="title has-text-centered">Leaderboard</h1>
-      <div class="block"></div>
-      <div class="visible" id="questions">
+      <div class="is-flex">
+        <div class="block m-1"></div>
+        <a class="m-3" href="../../index.html">Questions</a>
+        <a
+          class="m-3"
+          href="https://github.com/CanadianBleach/dad-vs-mom-jokes"
+          target="#blank"
+        >
+          Github
+        </a>
+        <a id="clear" class="m-3">Clear Saved</a>
       </div>
+      <div
+        class="hero-body has-text-centered is-flex-direction-column is-justify-content-space-evenly"
+      >
+        <div id="none-saved" class=""></div>
+        <div class="visible" id="questions"></div>
       </div>
     </section>
     <script type="module" src="../scripts/stats.js"></script>

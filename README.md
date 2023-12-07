@@ -17,7 +17,7 @@ Learnings
 - Throughout the development of this project, several key learnings emerged. Understanding user preferences and engagement patterns in humor-based applications was crucial in designing an enjoyable user experience. Implementing an efficient voting system and a clear leaderboard helped in showcasing the most popular jokes, providing insights into user preferences.
 
 
-## Screenshot
+## Our Site
 ![Main Page](./assets/images/quiz-page.PNG)
 
 ![Stats Page](./assets/images/leaderboard.PNG)

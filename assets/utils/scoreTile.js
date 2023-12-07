@@ -5,14 +5,14 @@ export default class ScoreTile extends HTMLElement {
 		super();
 		this.innerHTML =
 			`<div class="columns is-mobile">
-            <div class="column is-one-fifth has-text-right">
-              <p class="bd-notification is-danger">${rank}</p>
+            <div class="column is-one-fifth has-text-centered">
+              <p class="is-size-3">${rank})</p>
             </div>
-            <div class="column is-one-fifth has-text-left">
-              <p class="bd-notification is-danger">${score}</p>
+            <div class="column is-one-fifth has-text-centered">
+              <p class="is-size-3">${score}</p>
             </div>
             <div class="column has-text-left">
-              <p class="bd-notification is-danger">${joke}</p>
+              <p class="is-size-5">${joke}</p>
             </div>
           </div>`;
 	}

@@ -1,5 +1,5 @@
 import ScoreTile from "../utils/scoreTile.js"
-let parentDiv = document.querySelector("#parent");
+let parentDiv = document.querySelector("#questions");
 
 function loadJokes() {
     let data = JSON.parse(localStorage.getItem("jokes"));
@@ -23,7 +23,7 @@ function init() {
     });
 
     console.log(sortedJokes);
-    
+
     for (let j in sortedJokes) {
         let element = new ScoreTile(j, sortedJokes[j].rating, sortedJokes[j].jokeText)
         parentDiv.appendChild(element);

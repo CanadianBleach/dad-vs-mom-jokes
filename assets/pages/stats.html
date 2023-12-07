@@ -8,13 +8,32 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
-    <div class="section">
-      <h1 class="title has-text-centered">Stats</h1>
-      <div id="parent">
+    <section class="hero is-fullheight">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <a id="lol" class="ml-3 navbar-item" href="../../index.html">
+              Questions
+            </a>
+            <a class="navbar-item" href="https://github.com/CanadianBleach/dad-vs-mom-jokes" target="#blank">
+              Github
+            </a>    
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div
+        class="hero-body has-text-centered is-flex-direction-column"
+      >
+      <h1 class="title has-text-centered">Leaderboard</h1>
+      <div class="block"></div>
+      <div id="questions">
       </div>
-    </div>
+      </div>
+    </section>
     <script type="module" src="../scripts/stats.js"></script>
   </body>
 </html>

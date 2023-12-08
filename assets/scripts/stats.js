@@ -38,7 +38,7 @@ function clearSaved() {
         element.classList.add("is-size-3", "visible");
         element.textContent = "No questions to display. Go laugh at our jokes now..."
         noneParent.append(element);
-    }, 750);
+    }, 350);
 }
 
 function init() {

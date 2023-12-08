@@ -4,12 +4,12 @@
 }
 
 .visible {
-  animation: fadeIn 3s ease forwards;
+  animation: fadeIn .75s ease forwards;
   opacity: 100%;
 }
 
 .hidden {
-  animation: fadeOut 1s ease forwards;
+  animation: fadeOut .75s ease forwards;
   opacity: 0;
 }
 

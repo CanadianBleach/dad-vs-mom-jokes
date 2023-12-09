@@ -33,10 +33,6 @@ reloadJokes();
 questionsElem.classList.remove("hidden");
 questionsElem.classList.add("visible");
 
-// Remove loading class
-momJokeElement.classList.remove("is-loading");
-dadJokeElement.classList.remove("is-loading");
-
 function refreshJokeText() {
   // Mom jokes is 1, dad joke is 0
   momJokeElement.textContent = jokes[1].jokeText;

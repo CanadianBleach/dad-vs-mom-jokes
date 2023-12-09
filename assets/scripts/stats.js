@@ -8,16 +8,21 @@ let jokes = [];
 function loadJokes() {
     let data = JSON.parse(localStorage.getItem("jokes"));
     if (data == null) {
-        let element = document.createElement("h2");
-        element.classList.add("is-size-3", "visible");
-        element.textContent = "No questions to display. Go laugh at our jokes now..."
-        noneParent.append(element);
-
+        createNoneText();
         return;
     }
     for (let d in data) {
         jokes.push(data[d]);
     }
+}
+
+function createNoneText() {
+    questions.innerHTML = "";
+    let element = document.createElement("a");
+    element.classList.add("is-size-3", "visible");
+    element.href = "../../index.html";
+    element.textContent = "No questions to display. Go laugh at our jokes now..."
+    noneParent.append(element);
 }
 
 function clearSaved() {
@@ -33,11 +38,7 @@ function clearSaved() {
 
     // Wait for fade out and fade in new text
     setTimeout(() => {
-        questions.innerHTML = "";
-        let element = document.createElement("h2");
-        element.classList.add("is-size-3", "visible");
-        element.textContent = "No questions to display. Go laugh at our jokes now..."
-        noneParent.append(element);
+        createNoneText();
     }, 400);
 }
 

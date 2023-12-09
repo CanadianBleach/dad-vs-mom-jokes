@@ -42,6 +42,7 @@ function clearSaved() {
 }
 
 function init() {
+    questions.classList.remove("hidden");
     clearButton.addEventListener("click", clearSaved);
 
     // Load jokes from storage

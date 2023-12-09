@@ -6,6 +6,7 @@ let questionsAnswered = 0;
 
 let momJokeElement = document.querySelector("#mom-joke");
 let dadJokeElement = document.querySelector("#dad-joke");
+let questionsElem = document.querySelector("#questions");
 
 // URLS
 let dadJokeURL = "https://icanhazdadjoke.com/";
@@ -28,6 +29,9 @@ addJoke(dadJokeResp.joke, "dad-joke");
 // This prevents a delay in the jokes changing
 refreshJokeText();
 reloadJokes();
+
+questionsElem.classList.remove("hidden");
+questionsElem.classList.add("visible");
 
 // Remove loading class
 momJokeElement.classList.remove("is-loading");
@@ -116,10 +120,8 @@ function init() {
 }
 
 function loadJokes() {
-  console.log(localStorage.getItem("jokes"));
   let data = localStorage.getItem("jokes");
   let parsed = JSON.parse(data);
-  console.log(parsed);
   if (parsed == null) {
     return;
   }
@@ -133,7 +135,6 @@ function loadJokes() {
 function saveJokes() {
   let toSave = JSON.stringify(jokes);
   localStorage.setItem("jokes", toSave);
-  console.log(localStorage.getItem("jokes"));
 }
 
 init();

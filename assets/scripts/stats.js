@@ -74,7 +74,7 @@ function init() {
         questions.appendChild(element);
     }
 
-    questions.classList.remove("hidden");
+    // Fade in
     questions.classList.add("visible");
 }
 

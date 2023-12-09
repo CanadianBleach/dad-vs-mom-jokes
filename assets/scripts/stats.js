@@ -73,10 +73,10 @@ function init() {
         let element = new ScoreTile(j, sortedJokes[j].rating, sortedJokes[j].jokeText)
         questions.appendChild(element);
     }
+
+    questions.classList.remove("hidden");
+    questions.classList.add("visible");
 }
 
 init();
-
-console.log(localStorage.getItem("jokes"));
-
 
